@@ -25,8 +25,8 @@ export default function PorscheScene({
   const router = useRouter();
 
   return (
-    <div className="relative w-full h-screen overflow-hidden" {...props}>
-      <div className="h-[92%]">
+    <div className="relative w-full h-[91.5vh] overflow-hidden" {...props}>
+      <div className="h-full">
         {/* 3D Canvas */}
         <Canvas shadows camera={{ position: [15, 0, 15], fov: 30 }}>
           <spotLight
@@ -77,7 +77,7 @@ export default function PorscheScene({
       </div>
 
       {/* Gradient overlay for better text contrast */}
-      <div className="max-h-[92%] absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none"></div>
+      <div className="max-h-[100%] absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none"></div>
 
       {/* Hero Text Section */}
       <div className="absolute left-13 top-1/2 -translate-y-1/2 text-white max-w-xl space-y-14">
