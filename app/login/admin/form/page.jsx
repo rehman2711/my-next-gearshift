@@ -49,18 +49,15 @@ const FormCar = () => {
     const formData = new FormData();
     Object.entries(carInfo).forEach(([key, val]) => formData.append(key, val));
 
-    await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/cars`,
-      formData,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/cars`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
 
     router.push("login/admin/managedata");
   };
 
   return (
     <form onSubmit={submitForm} className="pb-20">
-
       {/* Header */}
       <div className="bg-yellow-500 text-white my-6 mx-6 rounded-3xl">
         <h1 className="text-white py-5 mx-5 text-center text-4xl font-bold">
@@ -73,7 +70,6 @@ const FormCar = () => {
         <h2 className="text-xl font-bold my-4">Basic Car Information</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-
           <input
             type="text"
             name="cId"
@@ -155,7 +151,6 @@ const FormCar = () => {
         {/* Pricing */}
         <h2 className="text-xl font-bold mt-10 mb-4">Pricing</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-
           <select
             name="cCurrency"
             value={carInfo.cCurrency}
@@ -204,7 +199,6 @@ const FormCar = () => {
         {/* Car Images */}
         <h2 className="text-xl font-bold mt-10 mb-4">Car Other Images</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-
           {[1, 2, 3].map((num) => (
             <input
               key={num}
@@ -214,13 +208,11 @@ const FormCar = () => {
               className="border p-3 w-full rounded"
             />
           ))}
-
         </div>
 
         {/* Car Features */}
         <h2 className="text-xl font-bold mt-10 mb-4">Car Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-
           <input
             type="text"
             name="mileage"

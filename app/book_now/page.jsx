@@ -19,9 +19,7 @@ const RentNow = () => {
 
   // Fetch cars
   const fetchCars = async () => {
-    const result = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/cars`
-    );
+    const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/cars`);
     setCars(result.data);
   };
 
@@ -48,10 +46,7 @@ const RentNow = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/bookings`,
-      customer
-    );
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/bookings`, customer);
 
     // Reset form
     setCustomer({
@@ -71,7 +66,6 @@ const RentNow = () => {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-gray-950 text-white py-12 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
         {/* --------- FORM CARD ---------- */}
         <form
           onSubmit={handleSubmit}

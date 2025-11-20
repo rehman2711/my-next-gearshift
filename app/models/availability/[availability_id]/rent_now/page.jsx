@@ -72,7 +72,6 @@ export default function RentTheCarNow() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-gray-950 text-white py-12 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
         {/* FORM */}
         <form
           onSubmit={handleSubmit}
@@ -179,28 +178,27 @@ export default function RentTheCarNow() {
 
         {/* PREVIEW */}
         <div className="my-auto">
-        <div className="flex flex-col items-center justify-center">
-          <h3 className="text-2xl font-semibold mb-4">
-            YOU CHOOSEN
-            <span className="ml-2 text-yellow-400">
-              {selectedCar?.cName || " — "}
-            </span>
-           
-          </h3>
+          <div className="flex flex-col items-center justify-center">
+            <h3 className="text-2xl font-semibold mb-4">
+              YOU CHOOSEN
+              <span className="ml-2 text-yellow-400">
+                {selectedCar?.cName || " — "}
+              </span>
+            </h3>
 
-          {selectedCar?.cImg ? (
-            // use next/image if you move to an actual page file; keeping img for simplicity
-            <img
-              src={selectedCar.cImg}
-              alt={selectedCar.cName}
-              className="w-full max-w-md rounded-2xl shadow-2xl border border-white/10"
-            />
-          ) : (
-            <div className="w-full max-w-md h-56 rounded-2xl bg-white/3 border border-white/6 flex items-center justify-center text-gray-400">
-              Loading image...
-            </div>
-          )}
-        </div>
+            {selectedCar?.cImg ? (
+              // use next/image if you move to an actual page file; keeping img for simplicity
+              <img
+                src={selectedCar.cImg}
+                alt={selectedCar.cName}
+                className="w-full max-w-md rounded-2xl shadow-2xl border border-white/10"
+              />
+            ) : (
+              <div className="w-full max-w-md h-56 rounded-2xl bg-white/3 border border-white/6 flex items-center justify-center text-gray-400">
+                Loading image...
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

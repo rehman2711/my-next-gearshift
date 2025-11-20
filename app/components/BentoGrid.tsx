@@ -22,7 +22,6 @@ export default function BrandGrid() {
   return (
     <div className="py-10">
       <div className="max-w-6xl mx-auto grid grid-cols-3 gap-4 px-4 auto-rows-[200px]">
-
         {items.map((item) => (
           <div
             key={item.id}
@@ -39,7 +38,6 @@ export default function BrandGrid() {
             />
           </div>
         ))}
-
       </div>
     </div>
   );

@@ -10,9 +10,7 @@ const AdminShowAll = () => {
   // FETCH DATA
   const fetchData = async () => {
     try {
-      const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/cars`
-      );
+      const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/cars`);
       setCars(result.data);
     } catch (error) {
       console.log("Error fetching cars:", error);
@@ -44,13 +42,13 @@ const AdminShowAll = () => {
 
       <div className="w-full bg-black/30 py-10">
         <div className="max-w-7xl mx-auto">
-
           {/* CARD GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
-
             {cars.map((val) => (
-              <div key={val.id} className="bg-white rounded-2xl shadow-md p-4 relative">
-
+              <div
+                key={val.id}
+                className="bg-white rounded-2xl shadow-md p-4 relative"
+              >
                 {/* YEAR BADGE */}
                 <span className="absolute right-5 top-5 bg-yellow-400 text-black px-3 py-1 rounded-md text-sm font-semibold">
                   {val.cYear}
@@ -77,24 +75,35 @@ const AdminShowAll = () => {
 
                 {/* SPECS */}
                 <div className="flex justify-between bg-black/10 mt-3 p-3 rounded-xl">
-                  
                   <div className="flex flex-col items-center">
-                    <img src="/images/card-svg/mileage-icon.svg" className="h-6" />
+                    <img
+                      src="/images/card-svg/mileage-icon.svg"
+                      className="h-6"
+                    />
                     <span className="text-sm">{val.mileage}</span>
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <img src="/images/card-svg/transmission-icon.svg" className="h-6" />
+                    <img
+                      src="/images/card-svg/transmission-icon.svg"
+                      className="h-6"
+                    />
                     <span className="text-sm">{val.type}</span>
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <img src="/images/card-svg/seats-icon.svg" className="h-6" />
+                    <img
+                      src="/images/card-svg/seats-icon.svg"
+                      className="h-6"
+                    />
                     <span className="text-sm">{val.person}</span>
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <img src="/images/card-svg/baggage-icon.svg" className="h-6" />
+                    <img
+                      src="/images/card-svg/baggage-icon.svg"
+                      className="h-6"
+                    />
                     <span className="text-sm">{val.bags}</span>
                   </div>
                 </div>
@@ -115,7 +124,6 @@ const AdminShowAll = () => {
                     {val.buttonDelete}
                   </button>
                 </div>
-
               </div>
             ))}
           </div>

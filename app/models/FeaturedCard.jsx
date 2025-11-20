@@ -32,7 +32,7 @@ export default function FeaturedBellows({ allCarsData = [] }) {
             {/* Collapsed Vertical Tab (Left Side) */}
             {!isOpen && (
               <div className="absolute inset-0 flex justify-center items-center bg-white/40 border border-gray-200/40 hover:bg-white/70 transition-all duration-500 rounded-2xl">
-                <p className="text-gray-800 font-mono font-extrabold text-3xl rotate-90 whitespace-nowrap tracking-[4]">
+                <p className="text-gray-800 font-extrabold text-3xl rotate-90 whitespace-nowrap tracking-[4]">
                   {car.cName}
                 </p>
               </div>
@@ -51,7 +51,7 @@ export default function FeaturedBellows({ allCarsData = [] }) {
                 >
                   {/* Top: Name + Image */}
                   <div className="w-full flex flex-col items-center justify-center text-center space-y-4">
-                    <h3 className="text-4xl font-bold text-gray-900 mb-16 font-mono">
+                    <h3 className="text-4xl font-bold text-gray-900 mb-16">
                       {car.cName}
                     </h3>
                     <div className="w-full rounded-2xl flex justify-center items-center overflow-hidden">
@@ -137,7 +137,7 @@ export default function FeaturedBellows({ allCarsData = [] }) {
                         router.push(`models/availability/${car.id}`);
                       }}
                     >
-                     Check Availability
+                      Check Availability
                     </Button>
                   </div>
                 </motion.div>

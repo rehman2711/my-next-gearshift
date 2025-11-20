@@ -40,7 +40,8 @@ const DEFAULTS = {
   segments: 35,
 };
 
-const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
+const clamp = (v: number, min: number, max: number) =>
+  Math.min(Math.max(v, min), max);
 const normalizeAngle = (d: number) => ((d % 360) + 360) % 360;
 const wrapAngleSigned = (deg: number) => {
   const a = (((deg + 180) % 360) + 360) % 360;
@@ -81,7 +82,11 @@ function buildItems(pool: ImageItem[] = [], seg: number): ItemDef[] {
     return { src: image.src || "", alt: image.alt || "" };
   });
 
-  const usedImages = Array.from({ length: totalSlots }, (_, i) => normalizedImages[i % normalizedImages.length] || { src: "", alt: "" });
+  const usedImages = Array.from(
+    { length: totalSlots },
+    (_, i) =>
+      normalizedImages[i % normalizedImages.length] || { src: "", alt: "" }
+  );
 
   // Try to avoid immediate duplicates where possible
   for (let i = 1; i < usedImages.length; i++) {
@@ -104,7 +109,13 @@ function buildItems(pool: ImageItem[] = [], seg: number): ItemDef[] {
   }));
 }
 
-function computeItemBaseRotation(offsetX: number, offsetY: number, sizeX: number, sizeY: number, segments: number) {
+function computeItemBaseRotation(
+  offsetX: number,
+  offsetY: number,
+  sizeX: number,
+  sizeY: number,
+  segments: number
+) {
   const unit = 360 / segments / 2;
   const rotateY = unit * (offsetX + (sizeX - 1) / 2);
   const rotateX = unit * (offsetY - (sizeY - 1) / 2);
@@ -137,7 +148,12 @@ export default function DomeGallery({
   const viewerRef = useRef<HTMLDivElement | null>(null);
   const scrimRef = useRef<HTMLDivElement | null>(null);
   const focusedElRef = useRef<HTMLElement | null>(null);
-  const originalTilePositionRef = useRef<{ left: number; top: number; width: number; height: number } | null>(null);
+  const originalTilePositionRef = useRef<{
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+  } | null>(null);
 
   const rotationRef = useRef({ x: 0, y: 0 });
   const startRotRef = useRef({ x: 0, y: 0 });
@@ -165,7 +181,10 @@ export default function DomeGallery({
     document.body.classList.remove("dg-scroll-lock");
   }, []);
 
-  const items = useMemo(() => buildItems(images ?? [], segments), [images, segments]);
+  const items = useMemo(
+    () => buildItems(images ?? [], segments),
+    [images, segments]
+  );
 
   const applyTransform = (xDeg: number, yDeg: number) => {
     const el = sphereRef.current;
@@ -215,10 +234,15 @@ export default function DomeGallery({
       root.style.setProperty("--overlay-blur-color", overlayBlurColor);
       root.style.setProperty("--tile-radius", imageBorderRadius);
       root.style.setProperty("--enlarge-radius", openedImageBorderRadius);
-      root.style.setProperty("--image-filter", grayscale ? "grayscale(1)" : "none");
+      root.style.setProperty(
+        "--image-filter",
+        grayscale ? "grayscale(1)" : "none"
+      );
       applyTransform(rotationRef.current.x, rotationRef.current.y);
 
-      const enlargedOverlay = viewerRef.current?.querySelector(".enlarge") as HTMLElement | null;
+      const enlargedOverlay = viewerRef.current?.querySelector(
+        ".enlarge"
+      ) as HTMLElement | null;
       if (enlargedOverlay && frameRef.current && mainRef.current) {
         const frameR = frameRef.current.getBoundingClientRect();
         const mainR = mainRef.current.getBoundingClientRect();
@@ -231,8 +255,10 @@ export default function DomeGallery({
           const tempRect = tempDiv.getBoundingClientRect();
           document.body.removeChild(tempDiv);
 
-          const centeredLeft = frameR.left - mainR.left + (frameR.width - tempRect.width) / 2;
-          const centeredTop = frameR.top - mainR.top + (frameR.height - tempRect.height) / 2;
+          const centeredLeft =
+            frameR.left - mainR.left + (frameR.width - tempRect.width) / 2;
+          const centeredTop =
+            frameR.top - mainR.top + (frameR.height - tempRect.height) / 2;
 
           enlargedOverlay.style.left = `${centeredLeft}px`;
           enlargedOverlay.style.top = `${centeredTop}px`;
@@ -293,7 +319,11 @@ export default function DomeGallery({
           inertiaRAF.current = null;
           return;
         }
-        const nextX = clamp(rotationRef.current.x - vY / 200, -maxVerticalRotationDeg, maxVerticalRotationDeg);
+        const nextX = clamp(
+          rotationRef.current.x - vY / 200,
+          -maxVerticalRotationDeg,
+          maxVerticalRotationDeg
+        );
         const nextY = wrapAngleSigned(rotationRef.current.y + vX / 200);
         rotationRef.current = { x: nextX, y: nextY };
         applyTransform(nextX, nextY);
@@ -321,11 +351,24 @@ export default function DomeGallery({
         movedRef.current = false;
         startRotRef.current = { ...rotationRef.current };
         startPosRef.current = { x: evt.clientX, y: evt.clientY };
-        const potential = (evt.target as Element).closest?.(".item__image") as HTMLElement | null;
+        const potential = (evt.target as Element).closest?.(
+          ".item__image"
+        ) as HTMLElement | null;
         tapTargetRef.current = potential || null;
       },
-      onDrag: ({ event, last, velocity: velArr = [0, 0], direction: dirArr = [0, 0], movement }) => {
-        if (focusedElRef.current || !draggingRef.current || !startPosRef.current) return;
+      onDrag: ({
+        event,
+        last,
+        velocity: velArr = [0, 0],
+        direction: dirArr = [0, 0],
+        movement,
+      }) => {
+        if (
+          focusedElRef.current ||
+          !draggingRef.current ||
+          !startPosRef.current
+        )
+          return;
 
         const evt = event as PointerEvent;
         if (pointerTypeRef.current === "touch") evt.preventDefault();
@@ -338,7 +381,11 @@ export default function DomeGallery({
           if (dist2 > 16) movedRef.current = true;
         }
 
-        const nextX = clamp(startRotRef.current.x - dyTotal / dragSensitivity, -maxVerticalRotationDeg, maxVerticalRotationDeg);
+        const nextX = clamp(
+          startRotRef.current.x - dyTotal / dragSensitivity,
+          -maxVerticalRotationDeg,
+          maxVerticalRotationDeg
+        );
         const nextY = startRotRef.current.y + dxTotal / dragSensitivity;
 
         const cur = rotationRef.current;
@@ -366,7 +413,12 @@ export default function DomeGallery({
           let vx = vMagX * dirX;
           let vy = vMagY * dirY;
 
-          if (!isTap && Math.abs(vx) < 0.001 && Math.abs(vy) < 0.001 && Array.isArray(movement)) {
+          if (
+            !isTap &&
+            Math.abs(vx) < 0.001 &&
+            Math.abs(vy) < 0.001 &&
+            Array.isArray(movement)
+          ) {
             const [mx, my] = movement as number[];
             vx = (mx / dragSensitivity) * 0.02;
             vy = (my / dragSensitivity) * 0.02;
@@ -383,12 +435,12 @@ export default function DomeGallery({
           }
           tapTargetRef.current = null;
 
-          if (cancelTapRef.current) setTimeout(() => (cancelTapRef.current = false), 120);
+          if (cancelTapRef.current)
+            setTimeout(() => (cancelTapRef.current = false), 120);
           if (pointerTypeRef.current === "touch") unlockScroll();
           if (movedRef.current) lastDragEndAt.current = performance.now();
           movedRef.current = false;
-           grayscale = false;
-         
+          grayscale = false;
         }
       },
     },
@@ -407,10 +459,14 @@ export default function DomeGallery({
       const el = focusedElRef.current;
       if (!el) return;
       const parent = el.parentElement as HTMLElement;
-      const overlay = viewerRef.current?.querySelector(".enlarge") as HTMLElement | null;
+      const overlay = viewerRef.current?.querySelector(
+        ".enlarge"
+      ) as HTMLElement | null;
       if (!overlay) return;
 
-      const refDiv = parent.querySelector(".item__image--reference") as HTMLElement | null;
+      const refDiv = parent.querySelector(
+        ".item__image--reference"
+      ) as HTMLElement | null;
 
       const originalPos = originalTilePositionRef.current;
       if (!originalPos) {
@@ -510,7 +566,10 @@ export default function DomeGallery({
                 el.style.transition = "";
                 el.style.opacity = "";
                 openingRef.current = false;
-                if (!draggingRef.current && rootRef.current?.getAttribute("data-enlarging") !== "true") {
+                if (
+                  !draggingRef.current &&
+                  rootRef.current?.getAttribute("data-enlarging") !== "true"
+                ) {
                   document.body.classList.remove("dg-scroll-lock");
                 }
               }, 300);
@@ -548,7 +607,13 @@ export default function DomeGallery({
     const offsetY = getDataNumber(parent, "offsetY", 0);
     const sizeX = getDataNumber(parent, "sizeX", 2);
     const sizeY = getDataNumber(parent, "sizeY", 2);
-    const parentRot = computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments);
+    const parentRot = computeItemBaseRotation(
+      offsetX,
+      offsetY,
+      sizeX,
+      sizeY,
+      segments
+    );
     const parentY = normalizeAngle(parentRot.rotateY);
     const globalY = normalizeAngle(rotationRef.current.y);
     let rotY = (-(parentY + globalY) % 360) as number;
@@ -585,13 +650,25 @@ export default function DomeGallery({
     (el.style as any).zIndex = 0;
     const overlay = document.createElement("div");
     overlay.className = "enlarge";
-    overlay.style.cssText = `position:absolute; left:${frameR.left - mainR.left}px; top:${frameR.top - mainR.top}px; width:${frameR.width}px; height:${frameR.height}px; opacity:0; z-index:30; will-change:transform,opacity; transform-origin:top left; transition:transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease; border-radius:${openedImageBorderRadius}; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.35);`;
-    const rawSrc = parent.dataset.src || (el.querySelector("img") as HTMLImageElement)?.src || "";
-    const rawAlt = parent.dataset.alt || (el.querySelector("img") as HTMLImageElement)?.alt || "";
+    overlay.style.cssText = `position:absolute; left:${
+      frameR.left - mainR.left
+    }px; top:${frameR.top - mainR.top}px; width:${frameR.width}px; height:${
+      frameR.height
+    }px; opacity:0; z-index:30; will-change:transform,opacity; transform-origin:top left; transition:transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease; border-radius:${openedImageBorderRadius}; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.35);`;
+    const rawSrc =
+      parent.dataset.src ||
+      (el.querySelector("img") as HTMLImageElement)?.src ||
+      "";
+    const rawAlt =
+      parent.dataset.alt ||
+      (el.querySelector("img") as HTMLImageElement)?.alt ||
+      "";
     const img = document.createElement("img");
     img.src = rawSrc;
     img.alt = rawAlt;
-    img.style.cssText = `width:100%; height:100%; object-fit:cover; filter:${grayscale ? "grayscale(1)" : "none"};`;
+    img.style.cssText = `width:100%; height:100%; object-fit:cover; filter:${
+      grayscale ? "grayscale(1)" : "none"
+    };`;
     overlay.appendChild(img);
     viewerRef.current!.appendChild(overlay);
     const tx0 = tileR.left - frameR.left;
@@ -625,8 +702,10 @@ export default function DomeGallery({
         overlay.style.height = frameR.height + "px";
         void overlay.offsetWidth;
         overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
-        const centeredLeft = frameR.left - mainR.left + (frameR.width - newRect.width) / 2;
-        const centeredTop = frameR.top - mainR.top + (frameR.height - newRect.height) / 2;
+        const centeredLeft =
+          frameR.left - mainR.left + (frameR.width - newRect.width) / 2;
+        const centeredTop =
+          frameR.top - mainR.top + (frameR.height - newRect.height) / 2;
         requestAnimationFrame(() => {
           overlay.style.left = `${centeredLeft}px`;
           overlay.style.top = `${centeredTop}px`;
@@ -790,15 +869,20 @@ export default function DomeGallery({
                     onClick={(e) => {
                       if (draggingRef.current) return;
                       if (movedRef.current) return;
-                      if (performance.now() - lastDragEndAt.current < 80) return;
+                      if (performance.now() - lastDragEndAt.current < 80)
+                        return;
                       if (openingRef.current) return;
                       openItemFromElement(e.currentTarget as HTMLElement);
                     }}
                     onPointerUp={(e) => {
-                      if ((e.nativeEvent as PointerEvent).pointerType !== "touch") return;
+                      if (
+                        (e.nativeEvent as PointerEvent).pointerType !== "touch"
+                      )
+                        return;
                       if (draggingRef.current) return;
                       if (movedRef.current) return;
-                      if (performance.now() - lastDragEndAt.current < 80) return;
+                      if (performance.now() - lastDragEndAt.current < 80)
+                        return;
                       if (openingRef.current) return;
                       openItemFromElement(e.currentTarget as HTMLElement);
                     }}
@@ -815,7 +899,9 @@ export default function DomeGallery({
                       className="w-full h-full object-cover pointer-events-none"
                       style={{
                         backfaceVisibility: "hidden",
-                        filter: `var(--image-filter, ${grayscale ? "grayscale(1)" : "none"})`,
+                        filter: `var(--image-filter, ${
+                          grayscale ? "grayscale(1)" : "none"
+                        })`,
                       }}
                     />
                   </div>

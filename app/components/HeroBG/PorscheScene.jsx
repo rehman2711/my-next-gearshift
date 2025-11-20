@@ -82,16 +82,14 @@ export default function PorscheScene({
       {/* Hero Text Section */}
       <div className="absolute left-13 top-1/2 -translate-y-1/2 text-white max-w-xl space-y-14">
         <div>
-          <h1 className="text-6xl font-extrabold leading-tight drop-shadow-md font-mono">
+          <h1 className="text-6xl font-extrabold leading-tight drop-shadow-md ">
             Drive the Legend
             <br />
-            <span className="text-yellow-400 font-mono">
-              Porsche 911 Carrera
-            </span>
+            <span className="text-yellow-400 ">Porsche 911 Carrera</span>
           </h1>
         </div>
         <div>
-          <p className="text-lg text-gray-200 max-w-md leading-relaxed font-mono">
+          <p className="text-lg text-gray-200 max-w-md leading-relaxed ">
             Experience the ultimate in speed, luxury, and precision — rent your
             dream car today.
           </p>
@@ -101,15 +99,17 @@ export default function PorscheScene({
           <Button
             variant="solid"
             size="sm"
-            className="text-base text-black font-mono bg-yellow-400 border border-3 border-slate-50 rounded-md hover:bg-yellow-[#e6c400] transition-all"
+            className="text-base text-black  bg-yellow-400 border border-3 border-slate-50 rounded-md hover:bg-yellow-[#e6c400] transition-all"
           >
             Book Now
           </Button>
           <Button
             variant="outline"
             size="sm"
-            className="text-base text-white font-mono bg-black/30 border border-3 border-white rounded-md hover:bg-yellow-[#e6c400] hover:text-yellow-400 hover:border-yellow-400 transition-all"
-            onClick={() => {router.push("/models");}}
+            className="text-base text-white  bg-black/30 border border-3 border-white rounded-md hover:bg-yellow-[#e6c400] hover:text-yellow-400 hover:border-yellow-400 transition-all"
+            onClick={() => {
+              router.push("/models");
+            }}
           >
             Explore Models
           </Button>

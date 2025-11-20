@@ -17,9 +17,7 @@ const NotifyMe = () => {
 
   return (
     <div className="flex justify-center items-center h-[92vh] bg-gray-100 p-4">
-      <div
-        className="bg-white p-8 w-full max-w-sm rounded-2xl shadow-lg"
-      >
+      <div className="bg-white p-8 w-full max-w-sm rounded-2xl shadow-lg">
         <h2 className="text-center mb-2 font-bold text-2xl">Stay Updated!</h2>
 
         {submitted ? (

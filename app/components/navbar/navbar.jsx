@@ -30,7 +30,7 @@ export default function Navbar() {
             className="flex items-center space-x-2 text-2xl text-black"
           >
             <Settings />
-            <span className="font-mono text-foreground">Gearshift</span>
+            <span className=" text-foreground">Gearshift</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -39,7 +39,7 @@ export default function Navbar() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="text-base font-mono hover:underline decoration-yellow-400 underline-offset-8 decoration-2 transition-all duration-300 focus:decoration-red-400"
+                className="text-base  hover:underline decoration-yellow-400 underline-offset-8 decoration-2 transition-all duration-300 focus:decoration-red-400"
               >
                 {item.title}
               </Link>
@@ -53,27 +53,36 @@ export default function Navbar() {
 
           {/* Desktop Login Button */}
           <div className="hidden lg:flex items-center space-x-3">
-            {path !== "/login" && path !== "/login/admin" &&  path !== "/login/admin/dashboard" && path !== "/login/admin/form" && path !== "/login/admin/manage_data" && path !== "/login/admin/view_bookings" && (
-              <Button
-                variant="outline"
-                size="sm"
-                className="font-mono text-sm px-4 py-2 bg-yellow-400 border border-gray-300 rounded-md hover:bg-yellow-300 transition-all"
-                onClick={() => {
-                  router.push("/login");
-                }}
-              >
-                Login
-              </Button>
-            )}
-            {path === "/login/admin" && (
+            {path !== "/login" &&
+              path !== "/login/admin" &&
+              path !== "/login/admin/dashboard" &&
+              path !== "/login/admin/form" &&
+              path !== "/login/admin/manage_data" &&
+              path !== "/login/admin/view_bookings" && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className=" text-sm px-4 py-2 bg-yellow-400 border border-gray-300 rounded-md hover:bg-yellow-300 transition-all"
+                  onClick={() => {
+                    router.push("/login");
+                  }}
+                >
+                  Login
+                </Button>
+              )}
+            {(path === "/login/admin" ||
+              path === "/login/admin/dashboard" ||
+              path === "/login/admin/form" ||
+              path === "/login/admin/manage_data" ||
+              path === "/login/admin/view_bookings") && (
               <div className="hidden lg:flex items-center space-x-3">
                 {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="font-mono text-sm px-4 py-2 bg-green-400 border border-gray-300 rounded-md hover:bg-green-500 transition-all"
+                    className=" text-sm px-4 py-2 bg-green-400 border border-gray-300 rounded-md hover:bg-green-500 transition-all"
                   >
-                    You Logged in as admin
+                    You logged in as admin
                   </Button>
                 }
               </div>

@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function AdminDashboard() {
   return (
     <div className="p-6">
-
       {/* PAGE TITLE */}
       <h2 className="bg-yellow-500 text-white py-5 mx-3 mb-8 text-center rounded-xl text-4xl font-extrabold shadow">
         Rental Car Dashboard
@@ -13,7 +12,6 @@ export default function AdminDashboard() {
 
       {/* STATS CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
         <div className="bg-blue-500 text-white rounded-xl p-6 shadow">
           <h5 className="text-xl font-semibold">Total Cars</h5>
           <p className="text-3xl mt-2">150</p>
@@ -28,7 +26,6 @@ export default function AdminDashboard() {
           <h5 className="text-xl font-semibold">Booked Cars</h5>
           <p className="text-3xl mt-2">30</p>
         </div>
-
       </div>
 
       {/* RECENT BOOKINGS */}
@@ -89,7 +86,6 @@ export default function AdminDashboard() {
         <h4 className="text-2xl font-semibold mb-4">Quick Links</h4>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
           <Link
             href="/login/admin/add-car"
             className="bg-blue-600 text-white text-center py-3 rounded-lg shadow hover:bg-blue-700 transition"
@@ -110,7 +106,6 @@ export default function AdminDashboard() {
           >
             View Reports
           </Link>
-
         </div>
       </div>
     </div>

@@ -10,24 +10,22 @@ const AdminPanelIndex = () => {
     <>
       {/* HEADER */}
       <div className="text-center mt-10">
-        <h2 className="mb-6 text-5xl font-extrabold font-mono">
+        <h2 className="mb-6 text-5xl font-extrabold">
           Welcome to the Admin Panel
         </h2>
       </div>
 
       {/* GRID CONTAINER */}
       <div className="max-w-6xl mx-auto mt-10 px-4">
-
         {/* TOP ROW */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
           {/* CARD 1 */}
           <div className="bg-white shadow-lg rounded-2xl p-6 text-center">
             <h5 className="text-xl font-semibold mb-2">Users</h5>
-            <p className="text-gray-600 mb-4">View and manage all registered users.</p>
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-            >
+            <p className="text-gray-600 mb-4">
+              View and manage all registered users.
+            </p>
+            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
               Go to Users
             </button>
           </div>
@@ -58,7 +56,6 @@ const AdminPanelIndex = () => {
 
         {/* SECOND ROW */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-
           {/* NOTIFICATIONS */}
           <div className="bg-white shadow-lg rounded-2xl p-6 text-center">
             <h5 className="text-xl font-semibold mb-2">Notifications</h5>

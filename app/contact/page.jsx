@@ -1,11 +1,17 @@
 import React from "react";
 import Container from "@/app/components/Container";
-import { Facebook, Instagram, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Mail,
+  MessageCircle,
+  Phone,
+  Twitter,
+} from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
-
 
 const Contact = () => {
   return (
@@ -106,10 +112,7 @@ const Contact = () => {
                       <Label className="font-semibold text-base mb-2">
                         Message Here
                       </Label>
-                      <Textarea
-                        placeholder="Enter Your Message Here"
-                        
-                      ></Textarea>
+                      <Textarea placeholder="Enter Your Message Here"></Textarea>
                     </div>
 
                     {/* Footer Buttons */}

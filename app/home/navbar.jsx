@@ -31,7 +31,6 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo Section */}
           <div className="">
-           
             <Link
               href="/"
               className="text-black text-2xl flex justify-center items-center space-x-2"
@@ -43,8 +42,8 @@ export default function Navbar() {
                 height={30}
                 width={30}
               /> */}
-               <Settings />
-              <div className="text-foreground font-mono">Gearshift</div>
+              <Settings />
+              <div className="text-foreground ">Gearshift</div>
             </Link>
           </div>
 
@@ -54,7 +53,7 @@ export default function Navbar() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="text-base font-mono hover:underline decoration-yellow-400 underline-offset-8 decoration-2 transition-all duration-1000 focus:decoration-red-400"
+                className="text-base  hover:underline decoration-yellow-400 underline-offset-8 decoration-2 transition-all duration-1000 focus:decoration-red-400"
               >
                 {item.title}
               </Link>
@@ -78,7 +77,7 @@ export default function Navbar() {
               <Button
                 variant="outline"
                 size="sm"
-                className="text-[14px] font-mono px-4 py-2 bg-yellow-400 border border-3 border-gray-300 rounded-md hover:bg-yellow-[#e6c400] transition-all"
+                className="text-[14px]  px-4 py-2 bg-yellow-400 border border-3 border-gray-300 rounded-md hover:bg-yellow-[#e6c400] transition-all"
               >
                 Login
               </Button>
