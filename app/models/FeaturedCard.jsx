@@ -13,7 +13,7 @@ export default function FeaturedBellows({ allCarsData = [] }) {
   const router = useRouter();
 
   return (
-    <div className="fixed bottom-0 left-0 w-full h-[100vh] flex justify-end items-end bg-gradient-to-t from-gray-50/80 via-white/60 to-transparent backdrop-blur-lg overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+    <div className="fixed bottom-0 left-0 w-full h-[100vh] flex justify-end items-end bg-gradient-to-r from-[#ffd6ff] via-{#ffd6ff}/30 to-transparent backdrop-blur-lg overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent ">
       {allCarsData.map((car) => {
         const isOpen = openId === car.id;
 

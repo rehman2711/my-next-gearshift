@@ -22,7 +22,7 @@ const Models = () => {
   }, []);
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-red-500">
         <FeaturedCard allCarsData={data} />
       </div>
     </>

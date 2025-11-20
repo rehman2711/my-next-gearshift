@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Input } from "@/components/ui/input";
+import {Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 const RentNow = () => {
   const [cars, setCars] = useState([]);
@@ -64,57 +67,57 @@ const RentNow = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-gray-950 text-white py-12 px-4">
+    <div className="min-h-screen w-full bg-gradient-to-r from-[#ffd6ff] via-{#ffd6ff}/30 to-transparent backdrop-blur-lg py-12 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* --------- FORM CARD ---------- */}
         <form
           onSubmit={handleSubmit}
-          className="backdrop-blur-xl bg-white/5 border border-white/10 p-8 rounded-2xl shadow-xl"
+          className="backdrop-blur-xl bg-white border border-white/10 p-8 rounded-2xl shadow-xl"
         >
           <h2 className="text-3xl font-bold text-center mb-6 text-yellow-400">
             Rent a Car — Premium Service
           </h2>
 
           {/* NAME */}
-          <label className="text-sm font-medium">Customer Name</label>
-          <input
+          <Label className="text-sm font-medium text-black px-1 mb-2 text-black px-1 mb-2">Customer Name</Label>
+          <Input
             type="text"
             name="name"
             value={customer.name}
             onChange={handleChange}
             placeholder="Enter your name"
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+            className="mb-4"
           />
 
           {/* MOBILE */}
-          <label className="text-sm font-medium">Mobile Number</label>
-          <input
+          <Label className="text-sm font-medium text-black px-1 mb-2">Mobile Number</Label>
+          <Input
             type="number"
             name="mobile"
             value={customer.mobile}
             onChange={handleChange}
             placeholder="Enter your mobile number"
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+            className="mb-4"
           />
 
           {/* EMAIL */}
-          <label className="text-sm font-medium">Email Address</label>
-          <input
+          <Label className="text-sm font-medium text-black px-1 mb-2">Email Address</Label>
+          <Input
             type="email"
             name="email"
             value={customer.email}
             onChange={handleChange}
             placeholder="Enter your email"
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+            className="mb-4"
           />
 
           {/* GENDER */}
-          <label className="text-sm font-medium">Gender</label>
+          <Label className="text-sm font-medium text-black px-1 mb-2">Gender</Label>
           <select
             name="gender"
             value={customer.gender}
             onChange={handleChange}
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg"
+            className="w-full mt-1 mb-4 px-3 py-2 text-black border rounded-lg text-sm"
           >
             <option value="">Select</option>
             <option value="Male">Male</option>
@@ -122,34 +125,34 @@ const RentNow = () => {
           </select>
 
           {/* ADDRESS */}
-          <label className="text-sm font-medium">Residential Address</label>
-          <input
+          <Label className="text-sm font-medium text-black px-1 mb-2">Residential Address</Label>
+          <Input
             type="text"
             name="address"
             value={customer.address}
             onChange={handleChange}
             placeholder="Enter your address"
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg"
+            className="mb-4"
           />
 
           {/* LICENCE */}
-          <label className="text-sm font-medium">Driving Licence Number</label>
-          <input
+          <Label className="text-sm font-medium text-black px-1 mb-2">Driving Licence Number</Label>
+          <Input
             type="text"
             name="licence"
             value={customer.licence}
             onChange={handleChange}
             placeholder="27 DRF 2001"
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg"
+            className="mb-4"
           />
 
           {/* CAR SELECT */}
-          <label className="text-sm font-medium">Choose a Car</label>
+          <Label className="text-sm font-medium text-black px-1 mb-2">Choose a Car</Label>
           <select
             name="cName"
             value={customer.cName}
             onChange={handleCarChange}
-            className="w-full mt-1 mb-4 px-3 py-2 bg-black/20 border border-white/20 rounded-lg"
+            className="w-full mt-1 mb-4 px-3 py-2 text-black text-sm border rounded-lg"
           >
             <option value="">Select Car</option>
             {cars.map((car, index) => (
@@ -160,19 +163,19 @@ const RentNow = () => {
           </select>
 
           {/* SUBMIT */}
-          <button
+          <Button
             type="submit"
             className="w-full mt-4 bg-yellow-500 hover:bg-yellow-600 transition text-black font-semibold py-3 rounded-lg shadow-lg"
           >
             Submit Form
-          </button>
+          </Button>
         </form>
 
         {/* --------- CAR PREVIEW --------- */}
         <div className="flex flex-col items-center">
           {selectedCar ? (
             <>
-              <h3 className="text-2xl font-semibold mb-3">
+              <h3 className="text-2xl font-semibold mb-3 text-black">
                 You Selected:
                 <span className="text-yellow-400"> {selectedCar.cName}</span>
               </h3>
