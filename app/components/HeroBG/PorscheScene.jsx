@@ -25,7 +25,7 @@ export default function PorscheScene({
   const router = useRouter();
 
   return (
-    <div className="relative w-full h-[91.5vh] overflow-hidden" {...props}>
+    <div className="relative w-full h-screen overflow-hidden" {...props}>
       <div className="h-full">
         {/* 3D Canvas */}
         <Canvas shadows camera={{ position: [15, 0, 15], fov: 30 }}>
