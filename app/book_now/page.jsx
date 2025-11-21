@@ -68,7 +68,7 @@ const RentNow = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-r from-[#ffd6ff] via-{#ffd6ff}/30 to-transparent backdrop-blur-lg py-12 px-4">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* --------- FORM CARD ---------- */}
         <form
           onSubmit={handleSubmit}
@@ -187,8 +187,8 @@ const RentNow = () => {
               />
             </>
           ) : (
-            <div className="opacity-40 text-lg text-gray-300">
-              Select a car to preview…
+            <div className="opacity-40 text-lg text-black">
+              Select a car to preview ... 
             </div>
           )}
         </div>

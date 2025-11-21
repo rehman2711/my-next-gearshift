@@ -49,9 +49,10 @@ const About = () => {
 
   return (
     <>
+    <div className="bg-gradient-to-r from-[#ffd6ff] via-{#ffd6ff}/30 to-transparent backdrop-blur-lg pt-8">
       <Container>
         {/* Our Journey + Image */}
-        <div className="container mx-auto">
+        <div className="mx-auto">
           <div className="flex flex-col md:flex-row gap-10">
             <div className="md:w-1/2">
               <h1 className="mt-28 text-2xl font-bold">Our Journey</h1>
@@ -172,6 +173,7 @@ const About = () => {
           </div>
         </div>
       </Container>
+    </div>
     </>
   );
 };

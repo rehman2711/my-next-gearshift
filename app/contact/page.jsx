@@ -16,8 +16,9 @@ import { Textarea } from "../../components/ui/textarea";
 const Contact = () => {
   return (
     <>
+    <div className="bg-gradient-to-r from-[#ffd6ff] via-{#ffd6ff}/30 to-transparent backdrop-blur-lg pt-8">
       <Container>
-        <div className="h-[70vh] w-full">
+        <div className="h-screen w-full">
           <div className="container mx-auto my-10 py-10 px-4">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
               {/* Left Section */}
@@ -143,6 +144,7 @@ const Contact = () => {
           </div>
         </div>
       </Container>
+      </div>
     </>
   );
 };

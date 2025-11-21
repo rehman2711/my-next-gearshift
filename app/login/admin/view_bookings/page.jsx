@@ -2,9 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const ViewBookings = () => {
   const [viewCustomerBookings, setViewCustomerBookings] = useState([]);
+
+  const router = useRouter();
 
   const fetchCustomer = async () => {
     const result = await axios.get(
@@ -20,10 +24,11 @@ const ViewBookings = () => {
   return (
     <>
       {/* Header */}
-      <div className="mx-auto mt-10 w-11/12 bg-gray-900 rounded-2xl p-6 text-center">
-        <h1 className="text-white text-3xl font-bold tracking-wide">
+      <div className="p-2 bg-yellow-400 flex justify-between items-center rounded-xl shadow-lg mx-10">
+        <h1 className="text-white text-3xl font-bold tracking-wide mx-auto">
           ALL BOOKINGS
         </h1>
+        <div><Button onClick={()=>{router.back()}} >Back</Button></div>
       </div>
 
       {/* Bookings Grid */}

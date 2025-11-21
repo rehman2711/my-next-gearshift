@@ -3,6 +3,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Container from "@/app/components/Container";
 
 const FormCar = () => {
   const router = useRouter();
@@ -57,12 +61,15 @@ const FormCar = () => {
   };
 
   return (
-    <form onSubmit={submitForm} className="pb-20">
+    <>
+    <Container>
+    <form onSubmit={submitForm} >
       {/* Header */}
-      <div className="bg-yellow-500 text-white my-6 mx-6 rounded-3xl">
-        <h1 className="text-white py-5 mx-5 text-center text-4xl font-bold">
+       <div className="p-2 bg-yellow-400 flex justify-between items-center rounded-xl shadow-lg">
+        <h1 className="text-white text-3xl font-bold tracking-wide mx-auto">
           CAR INFORMATION FORM
         </h1>
+        <div><Button onClick={()=>{router.back()}} >Back</Button></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
@@ -70,7 +77,7 @@ const FormCar = () => {
         <h2 className="text-xl font-bold my-4">Basic Car Information</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <input
+          <Input
             type="text"
             name="cId"
             placeholder="Car ID"
@@ -79,7 +86,7 @@ const FormCar = () => {
             className="border rounded p-3 w-full"
           />
 
-          <input
+          <Input
             type="text"
             name="cName"
             placeholder="Car Name"
@@ -88,7 +95,7 @@ const FormCar = () => {
             className="border rounded p-3 w-full"
           />
 
-          <input
+          <Input
             type="text"
             name="cSlogan"
             placeholder="Car Slogan"
@@ -97,7 +104,7 @@ const FormCar = () => {
             className="border rounded p-3 w-full"
           />
 
-          <input
+          <Input
             type="text"
             name="cModel"
             placeholder="Car Model"
@@ -106,7 +113,7 @@ const FormCar = () => {
             className="border rounded p-3 w-full"
           />
 
-          <input
+          <Input
             type="text"
             name="cBrand"
             placeholder="Car Brand"
@@ -128,8 +135,8 @@ const FormCar = () => {
 
           {/* Car Image */}
           <div className="md:col-span-1">
-            <label className="font-semibold">Car Image</label>
-            <input
+            <Label className="font-semibold">Car Image</Label>
+            <Input
               type="file"
               name="cImg"
               onChange={updateValue}
@@ -165,7 +172,7 @@ const FormCar = () => {
             <option value="DIRAM">DIRAM</option>
           </select>
 
-          <input
+          <Input
             type="number"
             name="cMoney"
             placeholder="Amount"
@@ -187,7 +194,7 @@ const FormCar = () => {
             <option value="YEAR">/ YEAR</option>
           </select>
 
-          <input
+          <Input
             type="month"
             name="cYear"
             value={carInfo.cYear}
@@ -200,7 +207,7 @@ const FormCar = () => {
         <h2 className="text-xl font-bold mt-10 mb-4">Car Other Images</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[1, 2, 3].map((num) => (
-            <input
+            <Input
               key={num}
               type="file"
               name={`img${num}`}
@@ -213,7 +220,7 @@ const FormCar = () => {
         {/* Car Features */}
         <h2 className="text-xl font-bold mt-10 mb-4">Car Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <input
+          <Input
             type="text"
             name="mileage"
             placeholder="Mileage"
@@ -233,7 +240,7 @@ const FormCar = () => {
             <option value="Manual">Manual</option>
           </select>
 
-          <input
+          <Input
             type="number"
             name="person"
             placeholder="Person Capacity"
@@ -242,7 +249,7 @@ const FormCar = () => {
             className="border rounded p-3"
           />
 
-          <input
+          <Input
             type="number"
             name="bags"
             placeholder="Bags"
@@ -253,15 +260,17 @@ const FormCar = () => {
         </div>
 
         <div className="text-center my-10">
-          <button
+          <Button
             type="submit"
             className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg text-lg font-semibold"
           >
             Submit Details
-          </button>
+          </Button>
         </div>
       </div>
     </form>
+    </Container>
+    </>
   );
 };
 
