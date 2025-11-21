@@ -47,7 +47,7 @@ export default function FeaturedBellows({ allCarsData = [] }) {
                   animate={{ opacity: 1, x: 0 }} // 👈 slide into place
                   exit={{ opacity: 0, x: -1000 }} // 👈 slide out to left
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="absolute inset-0 flex flex-col items-center justify-center p-8 space-y-8"
+                  className="absolute inset-0 flex flex-col items-center justify-center p-8 space-y-8 bg-gradient-to-t from-purple-300/50 to-white/70 rounded-2xl"
                 >
                   {/* Top: Name + Image */}
                   <div className="w-full flex flex-col items-center justify-center text-center space-y-4">
